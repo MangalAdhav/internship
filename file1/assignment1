@@ -1,1 +1,25 @@
+Q. What will be the output of the following code snippet?
+1) Ans: C- 15
+2) Ans: B- Filter
+3) Ans : A – Tuple
+4) Ans : D – Error
+5) Ans: A – raise
+6) Ans : C – datetime module
+7) Ans : C – 208
+8) Ans : b -  strftime
+9) Ans :- b – immutable
+10) Ans : a – range()
+11) Ans :- c – lambda function
+12) Ans :- c – both a and b
+13) Ans:- b – dump method
+14) Ans :-  a – load()
+15) Ans :- d – All mentioned above
+16) Ans :- a - for ship, captain in captains.items():
+                         print(ship, captain)
+17) Ans :- d :-  captains= {}
+18) Ans :-  c - captains={"enterprise" : "picard","voyager" : "janeway","Defiant" : "sisko"}
+19) Ans :- b -  for ship, captain in captains.items(): 
+                      print(f"The {ship} is captained by {captain}.")
+20) Ans :- c - del captains["Discovery"]
+                    It should be =  del captains[‘Discovery’]
 
