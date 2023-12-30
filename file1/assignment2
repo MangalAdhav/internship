@@ -1,0 +1,110 @@
+Name: Mrs. Mangal R Adhav
+Batch no: DS2312
+Assignment2
+__________________________________________________________________________________
+
+Question 1- Write a RegEx pattern in python program to check that a string contains only a certain      set of characters (in this case a-z, A-Z and 0-9).
+Answer:
+ import re
+text = "python 2 is super easy"
+result = re.findall("\w",text)
+print (result)
+['p', 'y', 't', 'h', 'o', 'n', '2', 'i', 's', 's', 'u', 'p', 'e', 'r', 'e', 'a', 's', 'y']
+
+or 
+import re
+text = "python 2 is super easy"
+result = re.findall("\w+",text)
+print (result)
+output:
+['python', '2', 'is', 'super', 'easy']
+
+
+Question 2- Write a RegEx pattern that matches a string that has an a followed by zero or more b's
+Answer:
+import re
+pattern = r"^a(b*)$"
+text = "a"
+match = re.search(pattern,text)
+print(match)
+output:
+<re.Match object; span=(0, 1), match='a'>
+
+__________________________________________________________________________________
+Question 3-  Write a RegEx pattern that matches a string that has an a followed by one or more b's
+Answer:
+import re
+pattern = r"^a(b+)$"
+text = "abbbb"
+match = re.search(pattern,text)
+print(match)
+output:
+<re.Match object; span=(0, 5), match='abbbb'>
+
+Question 4- Write a RegEx pattern that matches a string that has an a followed by zero or one 'b'.
+Answer:
+import re
+pattern = r"^ab?$"
+text = "ab"
+match = re.search(pattern,text)
+print(match)
+output:
+<re.Match object; span=(0, 2), match='ab'>
+
+Question 5- Write a RegEx pattern in python program that matches a string that has an a followed by three 'b'.
+Answer:
+import re
+pattern = r"^a(b{3})$"
+text = "abbb"
+match = re.search(pattern,text)
+print(match)
+output:
+<re.Match object; span=(0, 4), match='abbb'>
+
+Question 6- Write a RegEx pattern in python program that matches a string that has an a followed by two to three 'b'.
+Answer:
+import re
+pattern = r"^a(b{2,3})$"
+text = "abb"
+match = re.search(pattern,text)
+print(match)
+output:
+<re.Match object; span=(0, 3), match='abb'>
+
+
+Question 7- Write a Python program that matches a string that has an 'a' followed by anything, ending in 'b'.
+Answer:
+import re
+pattern = r"a.*b$"
+text = "ahmadkhankhwab"
+match = re.search(pattern,text)
+print(match)
+output:
+<re.Match object; span=(0, 14), match='ahmadkhankhwab'>
+
+
+Question 8- Write a RegEx pattern in python program that matches a word at the beginning of a string.
+Answer:
+string= "python is super easy if you do practice of it"
+find = re.search("^python.*",string)
+print (find)
+output:
+<re.Match object; span=(0, 45), match='python is super easy if you do practice of it'>
+
+Question 9- Write a RegEx pattern in python program that matches a word at the end of a string.
+Answer:
+string= "python is super easy if you do practice of it"
+find = re.search("^.*it$",string)
+print (find)
+output:
+<re.Match object; span=(0, 45), match='python is super easy if you do practice of it'>
+
+Question 10- Write a RegEx pattern in python program to find all words that are 4 digits long in a string.
+Sample text- '01 0132 231875 1458 301 2725.'
+Expected output- ['0132', '1458', '2725']
+Answer:
+text = "'01 0132 231875 1458 301 2725"
+result=re.findall(r"\w{4}",text)
+print(result)
+output:
+['0132', '2318', '1458', '2725']
