@@ -1,0 +1,814 @@
+#Q.1) Write a python program to scrape data for “Data Analyst” Job position in“Bangalore” location. You
+#have to scrape the job-title, job-location, company_name,experience_required. You have to scrape first 10 jobs data.
+
+#let's import required librabries
+
+import selenium
+import pandas as pd
+from selenium import webdriver
+import warning
+warnings.filterwarnings('ignore')
+from selenium.webdriver.common.by import By
+import time
+
+#let's connect to webbrowser chrome
+driver=webdriver.Chrome()
+
+#lets open website to access content
+driver.get("https:www.shine.com/")
+
+#let's enter key to search as Data Analyst for job title
+job_title=driver.find_element(By.XPATH,"/html/body/div/div[4]/div/div[2]/div[2]/div/form/div/div[1]/ul/li[1]/div/input")
+job_title.send_keys('Data Analyst')
+
+#lets enter key to search as Bangalore for job location
+location=driver.find_element(By.XPATH,"/html/body/div/div[4]/div/div[2]/div[2]/div/form/div/div[1]/ul/li[2]/div/input")
+location.send_keys('Bangalore')
+
+#let's click search button
+
+search=driver.find_element(By.XPATH,"/html/body/div/div[4]/div/div[2]/div[2]/div/form/div/div[2]/div/button")
+search.click()
+
+#let's extract Job titles
+
+title=driver.find_elements(By.XPATH,'//h2[@itemprop="name"]')
+title[0:10]
+
+#lets extract the text from the title
+
+job_title = []
+
+for i in title[0:10]:
+    job_title.append(i.text)
+    
+job_title
+
+#lets extract the job_location
+
+location = driver.find_elements(By.XPATH,'//div[@class=" jobCard_jobCard_lists_item__YxRkV jobCard_locationIcon__zrWt2"]')
+
+location[0:10]
+
+
+#lets extract text from the location
+
+job_location = []
+
+for i in location[0:10]:
+    job_location.append(i.text)
+    
+job_location
+
+#lets extract company name
+
+company =driver.find_elements(By.XPATH,'//div[@class="jobCard_jobCard_cName__mYnow"]')
+
+company[0:10]
+
+#lets extract text from the company name
+
+company_name = []
+
+for i in company[0:10]:
+    company_name.append(i.text)
+    
+company_name
+
+#Lets extract experience year
+
+experience = driver.find_elements(By.XPATH,'//div[@class=" jobCard_jobCard_lists_item__YxRkV jobCard_jobIcon__3FB1t"]')
+experience[0:10]
+
+#lets extract text from the experience required
+
+experience_req = []
+
+for i in experience[0:10]:
+    experience_req.append(i.text)
+    
+experience_req
+
+#lets make dataframe for this scrached data
+
+df = pd.DataFrame({'Job_title':job_title,'Company_name':company_name,'Job_location':job_location,'Experience_required':experience_req})
+
+df
+
+Output:
+
+	Job_title	Company_name	Job_location	Experience_required
+0	Lead Data Analyst	ara resources private limited	Bangalore	4 to 9 Yrs
+1	Data Analyst	diraa hr services hiring for mncs	Bangalore\n+3	0 to 1 Yr
+2	Vacancy For Data Analyst	yogita staffing solution	Bangalore\n+14	0 to 3 Yrs
+3	Clinical Data Analyst	techno endura	Bangalore\n+6	0 to 1 Yr
+4	Data Management	future solution centre	Bangalore\n+18	15 to >25 Yrs
+5	Data Modeler data	boyen haddin consulting and technol...	Bangalore	3 to 6 Yrs
+6	Data Modeller	boyen haddin consulting and technol...	Bangalore	3 to 6 Yrs
+7	Data Modeler Bangalore	boyen haddin consulting and technol...	Bangalore	3 to 6 Yrs
+8	Data Modeler	boyen haddin consulting and technol...	Bangalore	3 to 6 Yrs
+9	Full time Opportunity-Networking Advisor-Cisco...	ntt data information processing ser...	Bangalore\n+5	10 to 20 Yrs
+
+**********************************************************************************************************************************************************************
+
+#Q.2.Write a python program to scrape data for “Data Scientist” Job position in“Bangalore” location. You
+#have to scrape the job-title, job-location, company_name. You have to scrape first 10 jobs data.
+
+#let's import required librabries
+
+import selenium
+import pandas as pd
+from selenium import webdriver
+#import warning
+#warnings.filterwarnings('ignore')
+from selenium.webdriver.common.by import By
+import time
+
+#let's connect to webbrowser chrome
+driver=webdriver.Chrome()
+
+#lets open website to access content
+driver.get("https:www.shine.com/")
+
+#let's enter key to search as Data Scientist for job title
+job_title=driver.find_element(By.CLASS_NAME,"form-control  ")
+job_title.send_keys('Data Scientist')
+
+#lets enter key to search as Bangalore for job location
+location=driver.find_element(By.XPATH,'/html/body/div/div[4]/div/div[2]/div[2]/div/form/div/div[1]/ul/li[2]/div/input')
+location.send_keys('Bangalore')
+
+#let's click search button
+
+search=driver.find_element(By.XPATH,"/html/body/div/div[4]/div/div[2]/div[2]/div/form/div/div[2]/div/button")
+search.click()
+
+title=driver.find_element(By.XPATH,"/html/body/div[1]/div[1]/div[4]/div/div[2]/div[1]/div/div[1]/div[1]/div[1]/div[1]/h2/a")
+title.text
+
+#let's extract Job titles
+title=driver.find_elements(By.XPATH,'//h2[@itemprop="name"]')
+title[0:10]
+
+#lets extract the text from the jobtitle
+
+job_title = []
+
+for i in title[0:10]:
+    job_title.append(i.text)
+
+    
+job_title
+
+#lets extract the job_location
+
+location = driver.find_elements(By.XPATH,'//div[@class=" jobCard_jobCard_lists_item__YxRkV jobCard_locationIcon__zrWt2"]')
+
+location[0:10]
+
+#lets extract text from the location
+
+job_location = []
+
+for i in location[0:10]:
+    job_location.append(i.text)
+    
+job_location
+
+#lets extract company name
+
+company =driver.find_elements(By.XPATH,'//div[@class="jobCard_jobCard_cName__mYnow"]')
+
+company[0:10]
+
+#lets extract text from the company
+
+company_name = []
+
+for i in company[0:10]:
+    company_name.append(i.text)
+    
+company_name
+
+#lets make dataframe for this scrached data
+
+df = pd.DataFrame({'job_title':job_title,'company_name':company_name,'job_location':job_location})
+
+df
+
+output:
+	job_title	company_name	job_location
+0	ML Data Scientist	gujarat facility services hiring fo...	Bangalore
+1	Data Scientist Urgent Vacancy	renuka interprises	Bangalore\n+15
+2	Data Scientist Recruitment	renuka interprises	Bangalore\n+15
+3	Data Scientist Recruitment	renuka interprises	Bangalore\n+15
+4	Data Scientist	acme services private limited	Bangalore\n+4
+5	Data Scientist	ltimindtree limited	Bangalore
+6	Lead Data Scientist/ Principal Data Scientist	fractal	Bangalore\n+1
+7	Vacancy For Data Scientist Fresher and Experience	yogita staffing solution	Bangalore\n+14
+8	Senior Data Scientist	neostats	Bangalore\n+1
+9	Lead Data Scientist	aereo	Bangalore\n+1
+
+************************************************************************************************************************************************************************
+
+#Q3: In this question you have to scrape data using the filters available on the webpage as shown below:
+#    You have to use the location and salary filter.
+#    You have to scrape data for “Data Scientist” designation for first 10 job results.
+#    You have to scrape the job-title, job-location, company name, experience required. 
+#    The location filter to be used is “Delhi/NCR”. The salary filter to be used is “3-6” lakhs
+
+# Let's now import all the required libraries.
+import selenium
+import pandas as pd
+from selenium import webdriver
+import warnings
+warnings.filterwarnings('ignore')
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+#connect to the web driver
+driver = webdriver.Chrome()
+
+#let's get website
+driver.get("https:www.shine.com/")
+
+#2. Let's enter “Data Scientist” in “Skill, Designations, and Companies” field.
+
+job_title=driver.find_element(By.CLASS_NAME,"form-control  ")
+job_title.send_keys('Data Scientist')
+
+# 3. Then click the search button.
+search=driver.find_element(By.XPATH,"/html/body/div/div[4]/div/div[2]/div[2]/div/form/div/div[2]/div/button")
+search.click()
+
+
+click_loc=driver.find_element(By.XPATH,'//button[@class="filter_filterBtn__FAqUy btn btn-outline-grey font-size-xs "]')
+
+click_loc.click()
+
+select_delhi=driver.find_element(By.XPATH,'/html/body/div[3]/div/div/div/div[3]/div/div/div/ul/li[13]/span/label')
+select_delhi.click()
+
+click_sal=driver.find_element(By.XPATH,'/html/body/div[3]/div/div/div/div[3]/div/ul/li[3]')
+click_sal.click()
+
+select_range=driver.find_element(By.XPATH,'/html/body/div[3]/div/div/div/div[3]/div/div/div/ul/li[3]/span/label')
+select_range.click()
+
+show_result=driver.find_element(By.XPATH,'//button[@class="btn btn-secondary"]')
+show_result.click()
+
+#let's extract Job titles
+
+title=driver.find_elements(By.XPATH,'//h2[@itemprop="name"]')
+title[0:10]
+
+job_title = []
+
+for i in title[0:10]:
+    job_title.append(i.text)
+    
+job_title
+
+#lets extract the job_location
+
+location = driver.find_elements(By.XPATH,'//div[@class=" jobCard_jobCard_lists_item__YxRkV jobCard_locationIcon__zrWt2"]')
+
+location[0:10]
+job_location = []
+
+for i in location[0:10]:
+    job_location.append(i.text)
+    
+job_location
+
+#lets extract company name
+
+company =driver.find_elements(By.XPATH,'//div[@class="jobCard_jobCard_cName__mYnow"]')
+
+company[0:10]
+company_name = []
+
+for i in company[0:10]:
+    company_name.append(i.text)
+    
+company_name
+
+#Lets extract experience year
+
+experience = driver.find_elements(By.XPATH,'//div[@class=" jobCard_jobCard_lists_item__YxRkV jobCard_jobIcon__3FB1t"]')
+experience[0:10]
+
+experience_req = []
+
+for i in experience[0:10]:
+    experience_req.append(i.text)
+    
+experience_req
+
+#lets make dataframe for this scrached data
+
+df = pd.DataFrame({'Job_title':job_title,'Company_name':company_name,'Job_location':job_location,'Experience_required':experience_req})
+
+df
+
+output:
+Job_title	Company_name	Job_location	Experience_required
+0	Data Scientist	acme services private limited	Delhi\n+4	3 to 5 Yrs
+1	Hiring candidates for Marketing with Fare & Da...	sharda it services	Delhi\n+2	2 to 5 Yrs
+2	Hiring for Fare & Data Analyst-Travel process	sharda it services	Delhi\n+2	1 to 6 Yrs
+3	Clinical Data Analyst	techno endura	Delhi\n+6	0 to 1 Yr
+4	Apprentice Trainee	mahima consultancy	Delhi\n+9	0 Yrs
+5	Clinical Data Management	techno endura	Delhi\n+6	0 to 1 Yr
+6	Bioanalytical Research	techno endura	Delhi\n+6	0 to 1 Yr
+7	Junior Clinical Data Management	techno endura	Delhi\n+6	0 to 1 Yr
+8	Clinical SAS	techno endura	Delhi\n+8	0 to 2 Yrs
+9	Bioanalytical Research Associates	techno endura	Delhi\n+6	0 to 1 Yr
+
+*****************************************************************************************************************************************************************
+
+#Q.4 Scrape data of first 100 sunglasses listings on flipkart.com. You have to scrape four attributes: 
+# Brand,product_descriptionand price.
+#import all required libraries 
+import selenium
+import pandas as pd
+from selenium import webdriver
+import warnings
+warnings.filterwarnings('ignore')
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+#lets connect with web driver
+driver = webdriver.Chrome()
+
+#onpening the flipkart website on automated chrome window
+driver.get('https://www.flipkart.com/')
+
+#search the “sunglasses” and click search button 
+
+search_product = driver.find_element(By.CLASS_NAME,"Pke_EE")
+search_product.send_keys('sunglasses')
+
+#click on the search button
+
+search = driver.find_element(By.CLASS_NAME,"_2iLD__")
+search.click()
+
+Brand = []
+Product_Description = []
+Price= []
+Discount=[]
+
+
+for i in range(3):
+    brand = driver.find_elements(By.XPATH,'//div[@class="_2WkVRV"]')
+    for i in brand:Brand.append(i.text)
+    
+    product_des = driver.find_elements(By.XPATH,'//a[@class="IRpwTa"]')
+    for i in product_des:Product_Description.append(i.text)    
+    
+    price = driver.find_elements(By.XPATH,'//div[@class="_30jeq3"]')
+    for i in price:Price.append(i.text)
+        
+    discount = driver.find_elements(By.XPATH,'//div[@class="_3Ay6Sb"]')
+    for i in discount:Discount.append(i.text)
+    
+time.sleep(2)
+        
+nxt_button=driver.find_element(By.XPATH,'//a[@class="_1LKTO3"]') #scraping the list of buttons from the page
+nxt_button.click()
+
+print(len(Brand),len(Product_Description),len(Price))
+
+#lets  make dataframe from the scraped data
+
+df = pd.DataFrame({'Brand': Brand,'Product_Description':Product_Description,'Price':Price,'Discount': Discount})
+
+df
+
+
+Brand	Product_Description	Price	Discount
+0	AISLIN	UV Protection, Gradient Rectangular, Retro Squ...	₹418	72% off
+1	AISLIN	Polarized, UV Protection Rectangular, Wayfarer...	₹725	71% off
+2	PIRASO	UV Protection Butterfly Sunglasses (60)	₹388	85% off
+3	Elligator	UV Protection Cat-eye, Retro Square, Oval, Rou...	₹149	75% off
+4	Fastrack	UV Protection Wayfarer Sunglasses (Free Size)	₹629	42% off
+...	...	...	...	...
+115	Singco India	UV Protection, Riding Glasses Retro Square, Re...	₹429	82% off
+116	ROYAL SON	Polarized, UV Protection Retro Square, Over-si...	₹1,139	54% off
+117	AISLIN	Polarized, UV Protection Wayfarer Sunglasses (53)	₹645	71% off
+118	RESIST EYEWEAR	Toughened Glass Lens, UV Protection, Riding Gl...	₹1,199	76% off
+119	Singco India	Gradient, Toughened Glass Lens, UV Protection ...	₹590	70% off
+120 rows × 4 columns
+
+*******************************************************************************************************************************************************
+
+#Q5: Scrape 10 reviews data from flipkart.com for iphone11 phone. You have to go the link:
+
+# Let's now import all the required libraries.
+import selenium
+import pandas as pd
+from selenium import webdriver
+import warnings
+warnings.filterwarnings('ignore')
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+#connect to the web driver
+driver = webdriver.Chrome()
+#lets get website
+driver.get("https://www.flipkart.com/apple-iphone-11-black-64-gb/product-reviews/itm4e5041ba101fd?pid=MOBFWQ6BXGJCEYNY&lid=LSTMOBFWQ6BXGJCEYNYZXSHRJ&market")
+rating=driver.find_elements(By.XPATH,'//div[@class="_3LWZlK _1BLPMq"]')
+rating
+Rate = []
+
+for i in rating:
+    Rate.append(i.text)
+    
+
+button1=driver.find_element(By.XPATH,'/html/body/div/div/div[3]/div/div/div[2]/div[13]/div/div/nav/a[11]/span') #scraping the list of buttons from the page
+button1.click
+Rate
+
+review_sum=driver.find_elements(By.XPATH,'//p[@class="_2-N8zT"]')
+review_sum
+Review = []
+
+for i in review_sum:
+    Review.append(i.text)
+    
+
+button=driver.find_element(By.XPATH,'//a[@class="_1LKTO3"]') #scraping the list of buttons from the page
+button.click()
+Review
+
+full_review=driver.find_elements(By.XPATH,'//div[@class="t-ZTKy"]')
+full_review
+Full_Review = []
+
+for i in full_review:
+    Full_Review.append(i.text)
+    
+
+button=driver.find_element(By.XPATH,'//a[@class="_1LKTO3"]') #scraping the list of buttons from the page
+button.click()
+Full_Review
+
+print(len(Rate),len(Review),len(Full_Review))
+
+#lets  make dataframe from the scraped data
+
+df = pd.DataFrame({'Rating': Rate,'Review_summary':Review,'Full_review':Full_Review})
+
+df
+
+output:
+	Rating	Review_summary	Full_review
+0	5	Perfect product!	It’s really awesome
+1	5	Wonderful	Excellent Phone.
+2	5	Terrific	very good camera quality
+3	5	Classy product	iPhone 11 is a good phone. Not a very big diff...
+4	5	Best in the market!	NYC
+5	5	Worth every penny	It’s very good battery life and display and vi...
+6	5	Perfect product!	Value for money 🖤🖤
+7	5	Terrific purchase	Go for iPhone 11 , if confused between iPhone ...
+8	5	Just wow!	Good product 👌I love iPhone
+9	5	Fabulous!	Really satisfied with the Product I received.....
+
+***************************************************************************************************************************************************
+#Q6: Scrape data for first 100 sneakers you find when you visit flipkart.com and search for “sneakers” inthe
+#search field.
+
+#import all required libraries 
+import selenium
+import pandas as pd
+from selenium import webdriver
+import warnings
+warnings.filterwarnings('ignore')
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+#lets connect with web driver
+driver = webdriver.Chrome()
+#onpening the flipkart website on automated chrome window
+driver.get('https://www.flipkart.com/')
+
+#search the “sunglasses” and click search button 
+
+search_product = driver.find_element(By.CLASS_NAME,"Pke_EE")
+search_product.send_keys('sneakers')
+
+#click on the search button
+
+search = driver.find_element(By.CLASS_NAME,"_2iLD__")
+search.click()
+
+Brand = []
+Product_Description = []
+Price= []
+
+
+for i in range(3):
+    brand = driver.find_elements(By.XPATH,'//div[@class="_2WkVRV"]')
+    for i in brand:Brand.append(i.text)
+    
+    product_des = driver.find_elements(By.XPATH,'//div[@class="_2WkVRV"]')
+    for i in product_des:Product_Description.append(i.text)    
+    
+    price = driver.find_elements(By.XPATH,'//div[@class="_30jeq3"]')
+    for i in price:Price.append(i.text)
+    
+time.sleep(3)
+        
+nxt_button=driver.find_element(By.XPATH,'//a[@class="_1LKTO3"]') #scraping the list of buttons from the page
+nxt_button.click()
+
+print(len(Brand),len(Product_Description),len(Price))
+
+#lets  make dataframe from the scraped data
+
+df = pd.DataFrame({'Brand': Brand,'Product_Description':Product_Description,'Price':Price})
+
+df
+
+output:
+
+	Brand	Product_Description	Price
+0	kardam&sons	kardam&sons	₹339
+1	Deals4you	Deals4you	₹299
+2	Deals4you	Deals4you	₹299
+3	URBANBOX	URBANBOX	₹299
+4	RED TAPE	RED TAPE	₹1,253
+...	...	...	...
+115	PUMA	PUMA	₹1,289
+116	BRUTON	BRUTON	₹549
+117	aadi	aadi	₹299
+118	RED TAPE	RED TAPE	₹1,139
+119	RED TAPE	RED TAPE	₹1,143
+120 rows × 3 columns
+
+**********************************************************************************************************************************************#Q7: Go to webpage https://www.amazon.in/ Enter “Laptop” in the search field and then click the search icon. 
+# then set CPU Type filter to “Intel Core i7” as shown in the below image:
+
+# Let's now import all the required libraries.
+import selenium
+import pandas as pd
+from selenium import webdriver
+import warnings
+warnings.filterwarnings('ignore')
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+#connect to the web driver
+driver = webdriver.Chrome()
+
+#let's get website
+driver.get("https:www.amazon.in")
+
+# Let's enter “Laptop” in search field.
+
+title=driver.find_element(By.XPATH,'/html/body/div[1]/header/div/div[1]/div[2]/div/form/div[2]/div[1]/input')
+title.send_keys('Laptop')
+
+# Then click the search button.
+search=driver.find_element(By.XPATH,'/html/body/div[1]/header/div/div[1]/div[2]/div/form/div[3]/div/span/input')
+search.click()
+
+#let's select intel core i7
+select_filter=driver.find_element(By.XPATH,'/html/body/div[1]/div[1]/div[1]/div[2]/div/div[3]/span/div[1]/div/div/div[6]/ul[19]/span/span[9]/li/span/a/span')
+select_filter.click()
+
+click_i7=driver.find_element(By.XPATH'/html/body/div[1]/div[1]/div[1]/div[2]/div/div[3]/span/div[1]/div/div/div[8]/ul[19]/span/span[10]/li/span/a/span')
+click_i7.click()                         
+
+
+
+#let's extract laptop titles
+
+title=driver.find_elements(By.XPATH,'//span[@class="a-size-medium a-color-base a-text-normal"]')
+title[0:10]
+
+
+laptop_title = []
+
+for i in title[0:10]:
+    laptop_title.append(i.text)
+    
+laptop_title
+
+
+
+#lets extract rating
+
+rating = driver.find_elements(By.XPATH,'//a[@class="a-popover-trigger a-declarative"]')
+
+rating[0:10]
+Rating = []
+
+for i in rating[0:10]:
+    Rating.append(i)
+    
+Rating
+
+
+
+
+#lets extract price
+
+
+price = driver.find_elements(By.XPATH,'//span[@class="a-price-whole"]')
+
+price[0:10]
+Price = []
+
+for i in price[0:10]:
+    Price.append(i.text)
+    
+Price
+
+
+#lets make dataframe for this scrached data
+
+df = pd.DataFrame({'Laptop_title':laptop_title,'Rating':Rating,'Price':Price})
+
+df
+
+output:
+	Laptop_title	Rating	Price
+0	HP Windows 11 Home Victus Gaming Laptop,12Th G...	<selenium.webdriver.remote.webelement.WebEleme...	81,990
+1	Microsoft New Surface Pro9 13" Intel Evo 12 Ge...	<selenium.webdriver.remote.webelement.WebEleme...	2,61,990
+2	MSI Modern 14, Intel 12th Gen. i7-1255U, 36CM ...	<selenium.webdriver.remote.webelement.WebEleme...	54,820
+3	ASUS TUF Gaming F15, 15.6"(39.62 cms) FHD 144H...	<selenium.webdriver.remote.webelement.WebEleme...	73,990
+4	Lenovo IdeaPad Slim 3 Intel Core i7 12th Gen 1...	<selenium.webdriver.remote.webelement.WebEleme...	62,031
+5	HP Windows 11 Home Victus Gaming Laptop,12Th G...	<selenium.webdriver.remote.webelement.WebEleme...	46,990.
+6	Dell Inspiron 3530 Laptop, Intel Core i7-1355U...	<selenium.webdriver.remote.webelement.WebEleme...	81,990
+7	MSI Modern 15, Intel 13th Gen. i7-1355U, 40CM ...	<selenium.webdriver.remote.webelement.WebEleme...	77,618
+8	HP Pavilion X360 11th Gen Intel Core i7 14" (3...	<selenium.webdriver.remote.webelement.WebEleme...	62,031
+9	HP Victus 12th Gen Intel Core i7 15.6 inch(39....	<selenium.webdriver.remote.webelement.WebEleme...	
+******************************************************************************************************************************************
+
+#Q8: Write a python program to scrape data for Top 1000 Quotes of All Time.webpage https://www.azquotes.com/
+
+
+#import all required libraries 
+import selenium
+import pandas as pd
+from selenium import webdriver
+import warnings
+warnings.filterwarnings('ignore')
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+#lets connect with web driver
+driver = webdriver.Chrome()
+
+#on pening website
+driver.get('https://www.azquotes.com/')
+
+#click on the top quotes button
+
+search = driver.find_element(By.XPATH,'/html/body/div[1]/div[1]/div[1]/div/div[3]/ul/li[5]/a')
+search.click()
+
+#lets scrape quote
+Quote = []
+Author = []
+Type_of_quote= []
+
+
+for i in range(10):
+    quote = driver.find_elements(By.XPATH,'//a[@class="title"]')
+    for i in quote:Quote.append(i.text)
+    
+    author = driver.find_elements(By.XPATH,'//div[@class="author"]')
+    for i in author:Author.append(i.text)    
+    
+    quote_type = driver.find_elements(By.XPATH,'//div[@class="tags"]')
+    for i in quote_type:Type_of_quote.append(i.text)
+    
+time.sleep(10)
+        
+nxt_button=driver.find_element(By.XPATH,'/html/body/div[1]/div[2]/div/div/div/div[1]/div/div[3]/li[12]') #scraping the list of buttons from the page
+nxt_button.click()
+
+
+print(len(Quote),len(Author),len(Type_of_quote))
+
+#lets  make dataframe from the scraped data
+
+df = pd.DataFrame({'Quote': Quote,'Author':Author,'Type of quote':Type_of_quote})
+
+df
+
+output:Quote	Author	Type of quote
+0	Courage is the price that life exacts for gran...	Amelia Earhart	Inspirational, Life, Success
+1	The worst evils which mankind has ever had to ...	Ludwig von Mises	Peace, War, Government
+2	The moment we begin to fear the opinions of ot...	Elizabeth Cady Stanton	Life, Strength, Courage
+3	Trust yourself, you know more than you think y...	Benjamin Spock	Positive, Family, Trust
+4	Some people want it to happen, some wish it wo...	Michael Jordan	Inspirational, Life, Motivational
+...	...	...	...
+995	Regret for the things we did can be tempered b...	Sydney J. Harris	Love, Inspirational, Motivational
+996	America... just a nation of two hundred millio...	Hunter S. Thompson	Gun, Two, Qualms About
+997	For every disciplined effort there is a multip...	Jim Rohn	Inspirational, Greatness, Best Effort
+998	The spiritual journey is individual, highly pe...	Ram Dass	Spiritual, Truth, Yoga
+999	The mind is not a vessel to be filled but a fi...	Plutarch	Inspirational, Leadership, Education
+1000 rows × 3 columns
+
+***************************************************************************************************************************************************
+#Q9: Write a python program to display list of respected former Prime Ministers of India(i.e. Name, Born-Dead,
+#Term of office, Remarks) from https://www.jagranjosh.com/.
+
+
+#import all required libraries 
+import selenium
+import pandas as pd
+from selenium import webdriver
+import warnings
+warnings.filterwarnings('ignore')
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+#lets connect with web driver
+driver = webdriver.Chrome()
+
+
+#onpening the website
+driver.get('https://jagranjosh.com/')
+
+#click on the GK button
+
+search = driver.find_element(By.XPATH,'/html/body/div/header/nav/div/div/div[3]/ul/li[3]/a')
+search.click()
+
+click_on_list=driver.find_element(By.XPATH,'/html/body/div[1]/div[8]/section[7]/div[2]/ul/li[3]/article/h3/a')
+click_on_list.click()
+
+df = pd.DataFrame(data, columns=['Name', 'Born-Dead', 'Term of Office', 'Remarks'])
+*******************************************************************************************************************
+#Q10: Write a python program to display list of 50 Most expensive cars in the world (i.e.
+#Car name and Price) from https://www.motor1.com/
+
+#import all required libraries 
+import selenium
+import pandas as pd
+from selenium import webdriver
+import warnings
+warnings.filterwarnings('ignore')
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
+#lets connect with web driver
+driver = webdriver.Chrome()
+
+#opening website
+driver.get('https://www.motor1.com/')
+
+title=driver.find_element(By.XPATH,'/html/body/div[10]/div[2]/div/div/div[3]/div/div/div/form/input')
+title.send_keys('50 most expensive cars')
+
+search=driver.find_element(By.XPATH,'//button[@class="m1-search-panel-button m1-search-form-button-animate icon-search-svg"]')
+search.click()
+
+search1=driver.find_element(By.XPATH,'/html/body/div[10]/div[9]/div/div[1]/div/div/div[2]/div/div[1]/h3/a')
+search1.click()
+
+
+
+#lets scrape quote
+Car_name = []
+Price = []
+
+
+for i in range(3):
+    car_n = driver.find_elements(By.XPATH,'//h3[@class="subheader"]')
+    for i in car_n:Car_name.append(i.text)
+    
+    price = driver.find_elements(By.XPATH,'//*[@id="article_box"]')
+    for i in price:Price.append(i.text)    
+    
+        
+time.sleep(2)
+        
+#lets  make dataframe from the scraped data
+
+df = pd.DataFrame({'Car_name': Car_name,'Price':Price})
+
+df
+
+output:
+Car_name	Price
+
+
+
+
+
+
+
